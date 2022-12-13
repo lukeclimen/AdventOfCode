@@ -90,10 +90,7 @@ def readCrates(fileName):
     fileList = []
 
     for index, line in enumerate(csvFile):
-        newCrateStack = re.findall(r'[A-Za-z]+', line)
-        fileList.append([])
-        for index2 in range(0, len(newCrateStack)):
-            fileList[index].append(newCrateStack[index2])
+        fileList.append(re.findall(r'[A-Za-z]+', line))
 
     return fileList
 
