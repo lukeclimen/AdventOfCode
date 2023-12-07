@@ -32,7 +32,7 @@ import re
 import typing
 
 
-def _match_numbers(input_string: str) -> int:
+def _find_numbers_in_string(input_string: str) -> int:
     """Returns an integer from a string containing at least two digits"""
     number_list = re.findall("[0-9]", input_string)
     return int(number_list[0]) * 10 + int(number_list[-1])
@@ -46,7 +46,7 @@ def sum_calibration_values(fileName: typing.Text) -> int:
 
     sum = 0
     for line in fileArr:
-        sum += _match_numbers(line)
+        sum += _find_numbers_in_string(line)
 
     return sum
 
