@@ -15,9 +15,9 @@ Find the top three Elves carrying the most Calories. How many Calories are those
 """
 
 
-def getElf (calorieArray):
-    """ Iterates through array, returning
-        the 3 maximum values """
+def getElf(calorieArray):
+    """Iterates through array, returning
+    the 3 maximum values"""
 
     mostCals = 0
     secondMost = 0
@@ -25,14 +25,13 @@ def getElf (calorieArray):
 
     # Iterate through the calorie array
     for element in calorieArray:
-
         # Replacing the top elf
         if element > mostCals:
             thirdMost = secondMost
             secondMost = mostCals
             mostCals = element
 
-        #Replacing the second from top elf
+        # Replacing the second from top elf
         elif element > secondMost:
             thirdMost = secondMost
             secondMost = element
@@ -45,8 +44,8 @@ def getElf (calorieArray):
 
 
 def generateCalorieArray(fileName):
-    """ Generates an array of calories held by
-        each elf in the given file. """
+    """Generates an array of calories held by
+    each elf in the given file."""
 
     # Initialize a file object
     file = open(fileName, "r")
@@ -61,7 +60,7 @@ def generateCalorieArray(fileName):
     # Iterate through the lines of the array
     for element in fileArr:
         # Add up the calories for each elf
-        if element != '':
+        if element != "":
             currentElf += int(element)
         # Add the final calorie count into the array to return
         else:
@@ -71,8 +70,10 @@ def generateCalorieArray(fileName):
     return calorieArray
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = generateCalorieArray("calories.txt")
-    print("The elfs carrying the top 3 most calories have ", getElf(arr), " total calories")
-
-
+    print(
+        "The elfs carrying the top 3 most calories have ",
+        getElf(arr),
+        " total calories",
+    )

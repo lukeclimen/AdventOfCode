@@ -41,28 +41,33 @@ What would your total score be if everything goes exactly according to your stra
 
 
 def roundOutcome(opponent, myself):
-    """ Determines the outcome of R/P/S based on my selection and my opponent's """
+    """Determines the outcome of R/P/S based on my selection and my opponent's"""
     # Evaluate a win
-    if (myself == 'X' and opponent == 'C') or (
-            myself == 'Y' and opponent == 'A') or (
-            myself == 'Z' and opponent == 'B'):
+    if (
+        (myself == "X" and opponent == "C")
+        or (myself == "Y" and opponent == "A")
+        or (myself == "Z" and opponent == "B")
+    ):
         return 6
 
     # Evaluate a draw
-    elif (myself == 'X' and opponent == 'A') or (
-            myself == 'Y' and opponent == 'B') or (
-            myself == 'Z' and opponent == 'C'):
+    elif (
+        (myself == "X" and opponent == "A")
+        or (myself == "Y" and opponent == "B")
+        or (myself == "Z" and opponent == "C")
+    ):
         return 3
 
     # Otherwise, it was a loss
     return 0
 
+
 def round(opponent, myself):
-    """ Determines the score of a round of R/P/S """
+    """Determines the score of a round of R/P/S"""
     # Set the initial score based on my selection for R/P/S
-    if myself == 'X':
+    if myself == "X":
         initialScore = 1
-    elif myself == 'Y':
+    elif myself == "Y":
         initialScore = 2
     else:
         initialScore = 3
@@ -72,7 +77,7 @@ def round(opponent, myself):
 
 
 def simulateStrategy(fileName):
-    """ Generates a score based on the given strategy guide. """
+    """Generates a score based on the given strategy guide."""
 
     # Initialize a file object and a variable to store my score
     file = open(fileName, "r")
@@ -91,6 +96,6 @@ def simulateStrategy(fileName):
     return myScore
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     score = simulateStrategy("stratguide.txt")
     print("The score obtained by following the strategy guide is ", score, " points")

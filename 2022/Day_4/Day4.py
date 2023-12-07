@@ -55,23 +55,24 @@ In how many assignment pairs does one range fully contain the other?
 
 import re
 
+
 def readAssignments(fileName):
-    """ This function returns an array of numbers, with each group of 4 representing one pair of elves' tasks.
-        The array contains char values, as we can cast them to ints as we use them in the future. I couldn't
-        figure out how to cast them to ints in a way that didn't require another traversal of the array. """
-    file = open(fileName, 'r')
+    """This function returns an array of numbers, with each group of 4 representing one pair of elves' tasks.
+    The array contains char values, as we can cast them to ints as we use them in the future. I couldn't
+    figure out how to cast them to ints in a way that didn't require another traversal of the array."""
+    file = open(fileName, "r")
     fileArray = []
 
     for index, line in enumerate(file):
-        splitLine = re.findall(r'\d+', line)
+        splitLine = re.findall(r"\d+", line)
         fileArray += splitLine
 
     return fileArray
 
 
 def totalOverlap(elf1Low, elf1High, elf2Low, elf2High):
-    """ This function reads in the low and high bounds for two elves' assignments and determines whether
-        either elf's assignments completely encapsulates the other's. """
+    """This function reads in the low and high bounds for two elves' assignments and determines whether
+    either elf's assignments completely encapsulates the other's."""
 
     # If elf1's low bound is lower or equal to elf2's, check if elf1's high bound is also higher
     # or equal to elf2's. This would indicate elf1's assignments totally overlap elf2's
@@ -86,14 +87,19 @@ def totalOverlap(elf1Low, elf1High, elf2Low, elf2High):
     return False
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Read in the file
     elfArray = readAssignments("assignments.txt")
     # Initialize variable to store total overlap pairs
     totalOverlapSum = 0
     for index in range(0, len(elfArray), 4):
         # Casting the values to integers here
-        if totalOverlap(int(elfArray[index]), int(elfArray[index + 1]), int(elfArray[index + 2]), int(elfArray[index + 3])):
+        if totalOverlap(
+            int(elfArray[index]),
+            int(elfArray[index + 1]),
+            int(elfArray[index + 2]),
+            int(elfArray[index + 3]),
+        ):
             totalOverlapSum += 1
 
     # Show the number of pairs that have total overlap

@@ -26,9 +26,9 @@ Calories are being carried by the Elf carrying the most Calories. Find the Elf c
 """
 
 
-def getElf (calorieArray):
-    """ Iterates through array, returning
-        the maximum value """
+def getElf(calorieArray):
+    """Iterates through array, returning
+    the maximum value"""
 
     maxCals = 0
 
@@ -39,8 +39,8 @@ def getElf (calorieArray):
 
 
 def generateCalorieArray(fileName):
-    """ Generates an array of calories held by
-        each elf in the given file. """
+    """Generates an array of calories held by
+    each elf in the given file."""
 
     # Initialize a file object
     file = open(fileName, "r")
@@ -55,7 +55,7 @@ def generateCalorieArray(fileName):
     # Iterate through the lines of the array
     for element in fileArr:
         # Add up the calories for each elf
-        if element != '':
+        if element != "":
             currentElf += int(element)
         # Add the final calorie count into the array to return
         else:
@@ -65,8 +65,6 @@ def generateCalorieArray(fileName):
     return calorieArray
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     arr = generateCalorieArray("calories.txt")
     print("The elf carrying the most calories hass ", getElf(arr), " calories")
-
-

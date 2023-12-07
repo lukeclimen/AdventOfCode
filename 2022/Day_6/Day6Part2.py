@@ -22,10 +22,10 @@ import Day_6.Day6
 
 def findMarker(signalString):
     """
-        This function reads a string and returns the index is the position of the 14th consecutive unique character.
-        :param signalString: string
-        :return: markerIndex
-        """
+    This function reads a string and returns the index is the position of the 14th consecutive unique character.
+    :param signalString: string
+    :return: markerIndex
+    """
     markerIndex = 4
     # Iterate through the signal string
     for index in range(len(signalString)):
@@ -35,7 +35,7 @@ def findMarker(signalString):
         charBit = 0
         isMarker = True
         for i in range(14):
-            bitIndex = ord(signalString[index - i]) - ord('a')
+            bitIndex = ord(signalString[index - i]) - ord("a")
             if (charBit & (1 << bitIndex)) > 0:
                 isMarker = False
                 break
@@ -48,6 +48,6 @@ def findMarker(signalString):
     return -1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     signal = Day_6.Day6.readSignal("signal.txt")
     print(findMarker(signal) + 1)

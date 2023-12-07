@@ -43,8 +43,5 @@ Consider your map; how many trees are visible from outside the grid?
 """
 
 
-
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     pass

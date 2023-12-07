@@ -73,32 +73,32 @@ import re
 
 
 def readMoves(fileName):
-    """ This function reads in the numbers (3 per line) and outputs them into a list, which is returned. """
-    file = open(fileName, 'r')
+    """This function reads in the numbers (3 per line) and outputs them into a list, which is returned."""
+    file = open(fileName, "r")
     fileList = []
 
     for index, line in enumerate(file):
-        fileList += re.findall(r'\d+', line)
+        fileList += re.findall(r"\d+", line)
 
     return fileList
 
 
 def readCrates(fileName):
-    """ This function reads in lines from a CSV file representing a stack of crates. It returns a list of
-        stacks. """
-    csvFile = open(fileName, 'r')
+    """This function reads in lines from a CSV file representing a stack of crates. It returns a list of
+    stacks."""
+    csvFile = open(fileName, "r")
     fileList = []
 
     for index, line in enumerate(csvFile):
-        fileList.append(re.findall(r'[A-Za-z]+', line))
+        fileList.append(re.findall(r"[A-Za-z]+", line))
 
     return fileList
 
 
 def simulateRearrangement(moveList, crateList):
-    """ This function simulates the different steps laid out in moveList on the
-        items found in crateList. It returns a string of the top characters in each
-        stack of crates after all moves have been executed. """
+    """This function simulates the different steps laid out in moveList on the
+    items found in crateList. It returns a string of the top characters in each
+    stack of crates after all moves have been executed."""
 
     # Iterate through the move list, in steps of 3 (crates to move, stack moving from, stack moving to)
     for index in range(0, len(moveList), 3):
@@ -117,14 +117,15 @@ def simulateRearrangement(moveList, crateList):
 
 
 def simulateMove(cratesToMove, stackFrom, stackTo, crateList):
-    """ This function simulates the crate rearrangements made from one 'move' from the CSV file,
-        comprising of a number of crates to move, from which stack and to which stack. This function
-        does not return a value, but does change crateList. """
+    """This function simulates the crate rearrangements made from one 'move' from the CSV file,
+    comprising of a number of crates to move, from which stack and to which stack. This function
+    does not return a value, but does change crateList."""
     for iteration in range(0, cratesToMove):
         movedCrate = crateList[stackFrom - 1].pop()
         crateList[stackTo - 1].append(movedCrate)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     moveList = readMoves("moves.txt")
     crateList = readCrates("crates.csv")
     topCrates = simulateRearrangement(moveList, crateList)

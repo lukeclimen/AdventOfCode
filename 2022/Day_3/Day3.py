@@ -42,14 +42,14 @@ types?
 
 
 def readFile(fileName):
-    """ This function returns an array filled with the contents of a given file,
-        with each element representing a line from the file. """
-    file = open(fileName, 'r')
+    """This function returns an array filled with the contents of a given file,
+    with each element representing a line from the file."""
+    file = open(fileName, "r")
     return file.read().split("\n")
 
 
 def findCommonItem(itemString):
-    """ This function returns the duplicate letter (case sensitive) in a given string. """
+    """This function returns the duplicate letter (case sensitive) in a given string."""
     # Inserting to a dictionary, stopping on duplicate value
     letterDict = {}
 
@@ -64,8 +64,8 @@ def findCommonItem(itemString):
 
 
 def getPriority(itemString):
-    """ This function returns an integer based on the priority value specified in the instructions. The function
-        calls the findCommonItem function to get the needed letter"""
+    """This function returns an integer based on the priority value specified in the instructions. The function
+    calls the findCommonItem function to get the needed letter"""
 
     # Find the common letter and convert it to ASCII number code
     letter = findCommonItem(itemString)
@@ -79,7 +79,7 @@ def getPriority(itemString):
         return asciiValue - 96
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Getting the rucksack array contents and initializing a summing variable
     ruckArray = readFile("rucksack.txt")
     prioritySum = 0

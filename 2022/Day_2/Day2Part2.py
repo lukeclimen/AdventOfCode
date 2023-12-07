@@ -22,31 +22,34 @@ according to your strategy guide?
 
 
 def roundOutcome(opponent, winLoseDraw):
-    """ Determines what hand gesture (R/P/S) I choose based on my opponent """
+    """Determines what hand gesture (R/P/S) I choose based on my opponent"""
     # Evaluate needing to throw a rock
-    if (opponent == 'A' and winLoseDraw == 'Y') or (
-        opponent == 'B' and winLoseDraw == 'X') or (
-        opponent == 'C' and winLoseDraw == 'Z'
+    if (
+        (opponent == "A" and winLoseDraw == "Y")
+        or (opponent == "B" and winLoseDraw == "X")
+        or (opponent == "C" and winLoseDraw == "Z")
     ):
         return 1
 
     # Evaluate needing to throw a paper
-    elif (opponent == 'A' and winLoseDraw == 'Z') or (
-        opponent == 'B' and winLoseDraw == 'Y') or (
-        opponent == 'C' and winLoseDraw == 'X'
+    elif (
+        (opponent == "A" and winLoseDraw == "Z")
+        or (opponent == "B" and winLoseDraw == "Y")
+        or (opponent == "C" and winLoseDraw == "X")
     ):
         return 2
 
     # Otherwise, I need to throw scissors
     return 3
 
+
 def round(opponent, winLoseDraw):
-    """ Determines the score of a round of R/P/S """
+    """Determines the score of a round of R/P/S"""
 
     # Set the score based on if I need to Win, Lose or Draw
-    if winLoseDraw == 'X':
+    if winLoseDraw == "X":
         resultScore = 0
-    elif winLoseDraw == 'Y':
+    elif winLoseDraw == "Y":
         resultScore = 3
     else:
         resultScore = 6
@@ -56,7 +59,7 @@ def round(opponent, winLoseDraw):
 
 
 def simulateStrategy(fileName):
-    """ Generates a score based on the given strategy guide. """
+    """Generates a score based on the given strategy guide."""
 
     # Initialize a file object and a variable to store my score
     file = open(fileName, "r")
@@ -75,6 +78,6 @@ def simulateStrategy(fileName):
     return myScore
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     score = simulateStrategy("stratguide.txt")
     print("The score obtained by following the strategy guide is ", score, " points")

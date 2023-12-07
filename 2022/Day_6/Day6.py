@@ -46,13 +46,13 @@ How many characters need to be processed before the first start-of-packet marker
 """
 
 
-def readSignal (fileName):
+def readSignal(fileName):
     """
     This function reads a text string as a signal and stores the result in a string.
     :param fileName: string
     :return: signalString
     """
-    file = open(fileName, 'r')
+    file = open(fileName, "r")
     signalString = file.read()
     return signalString
 
@@ -72,7 +72,7 @@ def findMarker(signalString):
         charBit = 0
         isMarker = True
         for i in range(4):
-            bitIndex = ord(signalString[index - i]) - ord('a')
+            bitIndex = ord(signalString[index - i]) - ord("a")
             if (charBit & (1 << bitIndex)) > 0:
                 isMarker = False
                 break

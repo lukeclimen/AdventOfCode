@@ -20,23 +20,24 @@ In how many assignment pairs do the ranges overlap?
 
 import re
 
+
 def readAssignments(fileName):
-    """ This function returns an array of numbers, with each group of 4 representing one pair of elves' tasks.
-        The array contains char values, as we can cast them to ints as we use them in the future. I couldn't
-        figure out how to cast them to ints in a way that didn't require another traversal of the array. """
-    file = open(fileName, 'r')
+    """This function returns an array of numbers, with each group of 4 representing one pair of elves' tasks.
+    The array contains char values, as we can cast them to ints as we use them in the future. I couldn't
+    figure out how to cast them to ints in a way that didn't require another traversal of the array."""
+    file = open(fileName, "r")
     fileArray = []
 
     for index, line in enumerate(file):
-        splitLine = re.findall(r'\d+', line)
+        splitLine = re.findall(r"\d+", line)
         fileArray += splitLine
 
     return fileArray
 
 
 def anyOverlap(elf1Low, elf1High, elf2Low, elf2High):
-    """ This function reads in the low and high bounds for two elves' assignments and determines whether
-        either elf's assignments has any overlap with the other's. """
+    """This function reads in the low and high bounds for two elves' assignments and determines whether
+    either elf's assignments has any overlap with the other's."""
 
     # See if there are any "sandwiches" of a high-low pair around another end point. Ex:
     #
@@ -53,20 +54,26 @@ def anyOverlap(elf1Low, elf1High, elf2Low, elf2High):
 
     # elf2 sandwiching either end of elf1
     if (elf2Low <= elf1High and elf2High >= elf1High) or (
-            elf2Low <= elf1Low and elf2High >= elf1Low
+        elf2Low <= elf1Low and elf2High >= elf1Low
     ):
         return True
 
     return False
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # Read in the file
     elfArray = readAssignments("assignments.txt")
     # Initialize variable to store total overlap pairs
     overlapSum = 0
     for index in range(0, len(elfArray), 4):
         # Casting the values to integers here
-        if anyOverlap(int(elfArray[index]), int(elfArray[index + 1]), int(elfArray[index + 2]), int(elfArray[index + 3])):
+        if anyOverlap(
+            int(elfArray[index]),
+            int(elfArray[index + 1]),
+            int(elfArray[index + 2]),
+            int(elfArray[index + 3]),
+        ):
             overlapSum += 1
 
     # Show the number of pairs that have any overlap
