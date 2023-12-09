@@ -95,6 +95,5 @@ if __name__ == "__main__":
     for index, card in enumerate(card_list):
         winning_card_list_string, numbers_to_match_list_string = _split_numbers(card)
         card_worth =  _determine_card_score(winning_card_list_string, numbers_to_match_list_string)
-        print("Card ", index, " is worth ", card_worth, " points" )
         sum +=card_worth
     print(sum)
